@@ -1,14 +1,10 @@
-from path import Path
+from local_lib.path import Path
 
 
 def main():
-    try:
-        Path.makedirs('something')
-    except FileExistsError as e:
-        print(e)
-    Path.touch('something/something')
-    f = Path('something/something')
-    f.write_lines(['hello', 'world!'])
+    Path('folder').mkdir_p()
+    f = Path('folder/file.txt')
+    f.write_text("Hello world!")
     print(f.read_text())
 
 
