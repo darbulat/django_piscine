@@ -5,9 +5,9 @@ from bs4 import BeautifulSoup
 
 class RoadsToPhilosophy:
 
-    URL = 'https://en.wikipedia.org/wiki/'
+    URL = 'https://en.wikipedia.org/'
 
-    def __init__(self) -> None:
+    def __init__(self):
         self.prev = []
 
     def search_wikipedia(self, path: str) -> None:
@@ -30,8 +30,10 @@ class RoadsToPhilosophy:
         content = soup.find(id='mw-content-text')
         all_links = content.select('p > a')
         for link in all_links:
-            if link.get('href') is not None and link['href'].startswith('/wiki/')\
-                    and not link['href'].startswith('/wiki/Wikipedia:') and not link['href'].startswith('/wiki/Help:'):
+            if (link.get('href') is not None
+                    and link['href'].startswith('/wiki/')
+                    and not link['href'].startswith('/wiki/Wikipedia:')
+                    and not link['href'].startswith('/wiki/Help:')):
                 return self.search_wikipedia(link['href'])
         return print("It leads to a dead end !.")
 
