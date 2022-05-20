@@ -1,6 +1,6 @@
 import sys
 import requests
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, Tag, NavigableString
 
 
 class RoadsToPhilosophy:
@@ -27,15 +27,21 @@ class RoadsToPhilosophy:
         print(title)
         if title == 'Philosophy':
             return print("{} roads from {} to Philosophy".format(len(self.prev), self.prev[0] if len(self.prev) > 0 else 'Philosophy'))
-        content = soup.find(id='mw-content-text')
+        content = soup.find(name='div', attrs={'class': 'mw-parser-output'})
         all_links = content.select('p > a')
         for link in all_links:
             if (link.get('href') is not None
+                    and not self.in_brackets(link)
                     and link['href'].startswith('/wiki/')
                     and not link['href'].startswith('/wiki/Wikipedia:')
                     and not link['href'].startswith('/wiki/Help:')):
                 return self.search_wikipedia(link['href'])
         return print("It leads to a dead end !.")
+
+    def in_brackets(self, link: Tag):
+        if link and isinstance(link.next, NavigableString):
+            return '(' in link.previous or ')' in link.next
+        return True
 
 
 def main():
