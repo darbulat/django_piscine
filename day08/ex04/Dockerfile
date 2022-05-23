@@ -35,20 +35,14 @@ RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 
 COPY ljarrahd.com /etc/nginx/sites-available/ljarrahd.com
-COPY supervisor-app-staging.conf /etc/supervisor/conf.d/
-
 RUN ln -s /etc/nginx/sites-available/ljarrahd.com /etc/nginx/sites-enabled/; \
 rm /etc/nginx/sites-available/default; \
 rm /etc/nginx/sites-enabled/default;
 
-
+COPY supervisor-app-staging.conf /etc/supervisor/conf.d/
 ENV DJANGO_SETTINGS_MODULE=d08.settings
 
-# setup all the configfiles
-
-
-RUN chmod -R 755 /var/www/;
-
 EXPOSE 80
+EXPOSE 443
 
 CMD ["supervisord", "-n"]

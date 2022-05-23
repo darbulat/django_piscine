@@ -2,12 +2,12 @@ CONTAINER_NAME = ljarrahd_container
 
 all:
 	docker build -t ljarrahd .
-	docker run -p 80:80 -d --name $(CONTAINER_NAME) ljarrahd
+	docker run -p 80:80 -p 443:443 -d --name $(CONTAINER_NAME) ljarrahd
 
 re: remove all
 
 run:
-	docker run -p 80:80 -d --name $(CONTAINER_NAME) ljarrahd
+	docker run -p 80:80 -p 443:443 -d --name $(CONTAINER_NAME) ljarrahd
 
 build:
 	docker build -t ljarrahd .
