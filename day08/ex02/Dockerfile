@@ -6,22 +6,18 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y \
-    curl apt-utils apt-transport-https \
-    git \
     python3.8 \
     python3-dev \
     python3-setuptools \
     python3-pip \
     nginx \
     supervisor \
-    unixodbc-dev \
     sqlite3 \
     openssl && \
     rm -rf /var/lib/apt/lists/*
 
 RUN pip3 install -U pip setuptools
 RUN pip3 install gevent
-RUN apt-get install python3-setuptools
 
 ADD . /project/
 
