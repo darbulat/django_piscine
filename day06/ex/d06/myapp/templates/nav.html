@@ -9,7 +9,12 @@
         <span class="icon-bar"></span>
       </button>
       <b><a class="navbar-brand" href="{% url 'index' %}">Life Pro Tips</a></b>
-      <a class="navbar-brand" href="{% url 'index' %}">Hello {{request.user.username}}!</a>
+      <a class="navbar-brand" href="{% url 'index' %}">
+        Hello {{request.user.username}}!
+        {% if request.user.is_authenticated %}
+        ({{ rep_points }})
+        {% endif %}
+      </a>
 </div>
 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">

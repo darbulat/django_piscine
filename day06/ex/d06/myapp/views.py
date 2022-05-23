@@ -23,8 +23,13 @@ class Index(View):
 
         except db.DatabaseError as e:
             tips = []
+        if request.user.is_authenticated:
+            rep_points = request.user.rep_points
+        else:
+            rep_points = 0
         context = {
             'tipform': TipForm(),
+            'rep_points': rep_points,
             'tips': [{
                 'id': tip.id,
                 'content': tip.content,
@@ -160,12 +165,10 @@ class Tip(LoginRequiredMixin, View):
             tip: TipModel = TipModel.objects.get(id=form.cleaned_data['id'])
             if form.cleaned_data['type']:
                 tip.upvote(request.user)
-                tip.author.increase_rep()
             elif tip.author != request.user and not request.user.has_perm('myapp.can_down_vote'):
                 return self.__error_msg("vote", "you can't do that!!")
             else:
                 tip.downvote(request.user)
-                tip.author.decrease_rep()
         except TipModel.DoesNotExist as e:
             return self.__error_msg("vote", "Tip does not exist")
         except DatabaseError as e:
