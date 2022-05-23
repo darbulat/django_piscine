@@ -54,6 +54,5 @@ ENV DJANGO_SETTINGS_MODULE=d08.settings
 RUN chmod -R 755 /var/www/;
 
 EXPOSE 80
-EXPOSE 443
 
 CMD ["supervisord", "-n"]
