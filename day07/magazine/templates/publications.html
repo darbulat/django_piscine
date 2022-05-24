@@ -1,0 +1,36 @@
+{% extends 'base.html' %} {% load bootstrap3 %} {% load i18n %}{% block title %}{{ user.username }}'s Publications | {% endblock title %} {% block content %}
+<h1>{{ user.username }}'{% trans 's Publications' %}</h1>
+{% include 'nav.html' %}
+<div>
+  <div class="table-responsive">
+  <a class="btn btn-primary btn-lg btn-block" role="button" aria-pressed="true" href="{% url 'publish' %}">{% trans 'Publish' %}</a>
+<br>
+    <table class="table table-striped table-bordered table-hover">
+      <tr>
+        <th>{% trans 'title' %}</th>
+        <th>{% trans 'synopsis' %}</th>
+        <th>{% trans 'author' %}</th>
+        <th>{% trans 'created' %}</th>
+        <th>{% trans 'when' %}</th>
+        <th></th>
+      </tr>
+      {% for article in object_list %}
+      <tr>
+        <td>{{ article.title|truncatechars:20 }}</td>
+        <td>{{ article.synopsis|truncatechars:20 }}</td>
+        <td>{{ article.author }}</td>
+        <td>{{ article.created }}</td>
+        <td>{{ article.created|timesince}}</td>
+        <td>
+          <a
+            href="{% url 'articles_detail' article.id %}"
+            class="btn btn-info"
+            >Read</a
+          >
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+</div>
+{% endblock content %}
