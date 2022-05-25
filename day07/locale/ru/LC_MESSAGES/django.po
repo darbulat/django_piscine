@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-24 17:30+0000\n"
+"POT-Creation-Date: 2022-05-25 07:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,33 +28,38 @@ msgstr "English"
 msgid "Russian"
 msgstr "Русский"
 
-#: magazine/templates/articles.html:10
+#: magazine/templates/articles.html:10 magazine/templates/nav.html:11
 msgid "Articles"
 msgstr "Статьи"
 
-#: magazine/templates/articles.html:16 magazine/templates/publications.html:10
-msgid "title"
+#: magazine/templates/articles.html:14
+msgid "Share your writings"
+msgstr "Поделитесь своими произведениями"
+
+#: magazine/templates/articles.html:20 magazine/templates/favourite.html:11
+#: magazine/templates/publications.html:10
+msgid "Title"
 msgstr "Заголовок"
 
-#: magazine/templates/articles.html:17 magazine/templates/publications.html:11
-msgid "synopsis"
-msgstr "резюме"
+#: magazine/templates/articles.html:21 magazine/templates/publications.html:11
+msgid "Synopsis"
+msgstr "Описание"
 
-#: magazine/templates/articles.html:18 magazine/templates/publications.html:12
-msgid "author"
-msgstr "автор"
+#: magazine/templates/articles.html:22 magazine/templates/publications.html:12
+msgid "Writer"
+msgstr "Автор"
 
-#: magazine/templates/articles.html:19 magazine/templates/publications.html:13
-msgid "created"
-msgstr "создан"
+#: magazine/templates/articles.html:23 magazine/templates/publications.html:13
+msgid "Created"
+msgstr "Cоздан"
 
-#: magazine/templates/articles.html:20 magazine/templates/publications.html:14
-msgid "when"
-msgstr "дата"
+#: magazine/templates/articles.html:24 magazine/templates/publications.html:14
+msgid "When"
+msgstr "Когда"
 
-#: magazine/templates/articles.html:34
+#: magazine/templates/articles.html:38
 msgid "Read"
-msgstr "читать"
+msgstr "Читать"
 
 #: magazine/templates/base.html:10
 msgid "News"
@@ -69,22 +74,10 @@ msgstr "Подробно"
 msgid "Favourite"
 msgstr "Избранные"
 
-#: magazine/templates/favourite.html:11
-msgid "Title"
-msgstr "Заголовок"
-
 #: magazine/templates/login.html:4 magazine/templates/login.html:8
 #: magazine/templates/nav.html:36
 msgid "Login"
 msgstr "Вход"
-
-#: magazine/templates/nav.html:8
-msgid "Home"
-msgstr "Главная"
-
-#: magazine/templates/nav.html:11
-msgid "Last Articles"
-msgstr "Последние статьи"
 
 #: magazine/templates/nav.html:15
 msgid "Publications"
@@ -107,6 +100,7 @@ msgstr "Выход"
 msgid "s Publications"
 msgstr " статьи"
 
-#: magazine/templates/publish.html:4 magazine/templates/publish.html:8
+#: magazine/templates/publications.html:6 magazine/templates/publish.html:4
+#: magazine/templates/publish.html:8
 msgid "Publish"
 msgstr "Опубликовать"
